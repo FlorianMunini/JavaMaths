@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 /******************************************************************************
 	 *  Compilation:  javac FFT.java
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 	 *  
 	 ******************************************************************************/
 
-	public class FFT {
+	public class FFT extends Observable{
 
 	    // compute the FFT of x[], assuming its length is a power of 2
 	    public ArrayList<Complex> fft(ArrayList<Complex> x) {
