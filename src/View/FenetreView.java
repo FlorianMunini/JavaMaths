@@ -20,7 +20,7 @@ public class FenetreView extends JFrame{
 	
 	public FenetreView()  {
 	  this.setMenu();
-	  this.display();
+	 
 	  
 	  }
 	
@@ -45,9 +45,9 @@ public void setMenu(){
 		JMenuItem enregistrer= new JMenuItem("Enregistrer en .png");
 		menu1.add(enregistrer);
 		menu1.addSeparator();
-		JMenuItem save= new JMenuItem("Enregistrer en .txt");
-		menu1.add(save);
-		JMenuItem load= new JMenuItem("Charger les .txt");
+	//	JMenuItem save= new JMenuItem("Enregistrer en .txt");
+		//menu1.add(save);
+		JMenuItem load= new JMenuItem("Charger le .txt");
 		menu1.add(load);
 		menu1.addSeparator();
 		JMenuItem quitter = new JMenuItem("Quitter");
@@ -69,6 +69,7 @@ public void setMenu(){
 			
 			    }      
 			  });
+	
 		/* nouveaudessin.addActionListener(new ActionListener(){
 			    public void actionPerformed(ActionEvent arg0) {
 			      draw.delete();
@@ -81,7 +82,7 @@ public void setMenu(){
 		 			s.main(draw.liste);
 			    }      
 			  });
-	 			load.addActionListener(new ActionListener(){
+			  	 load.addActionListener(new ActionListener(){
 			    public void actionPerformed(ActionEvent arg0) {
 					Load l=new Load();
 		 			l.main(draw.liste);
@@ -89,12 +90,13 @@ public void setMenu(){
 		 			draw.repaint();
 		 			}      
 			  });
+	 			
 		*/
 		 
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 	//	nouveaudessin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 		enregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK));
-		annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
+		//annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 		
  	}
 
