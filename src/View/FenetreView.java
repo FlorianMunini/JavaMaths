@@ -21,6 +21,7 @@ public class FenetreView extends JFrame{
 	public FenetreView()  {
 	  this.setMenu();
 	  this.display();
+	  
 	  }
 	
 public void setMenu(){
@@ -65,7 +66,7 @@ public void setMenu(){
 		  });
 		 enregistrer.addActionListener(new ActionListener(){
 			    public void actionPerformed(ActionEvent arg0) {
-			    Panneau p=new Panneau();
+			
 			    }      
 			  });
 		/* nouveaudessin.addActionListener(new ActionListener(){
@@ -96,6 +97,7 @@ public void setMenu(){
 		annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 		
  	}
+
 public void display (){
 	    this.setTitle("Ma première fenêtre Java");
 	    this.setSize(800, 500);
