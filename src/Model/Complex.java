@@ -152,4 +152,17 @@ package Model;
 	        return Objects.hash(re, im);
 	   
 	    }
+	    
+	    public double module()
+	    {
+	    	return Math.sqrt((this.getRe())*(this.getRe())+(this.getIm()*(this.getIm())) );
+	    }
+
+		public double getRe() {
+			return re;
+		}
+
+		public double getIm() {
+			return im;
+		}
 }
