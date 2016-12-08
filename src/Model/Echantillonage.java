@@ -10,7 +10,7 @@ public class Echantillonage {
 	private static final Logger LOGGER= LoggerFactory.getLogger(Echantillonage.class);
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Echantillon
-	int nbPoint;
+	double pas;
 	// domaine de definition
 	double debutIntervalle;
 	double finIntervalle;
@@ -23,59 +23,151 @@ public class Echantillonage {
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public Echantillonage( int nbPoint, double debutIntervalle, double finIntervalle) {
-		this.nbPoint=nbPoint;
+	public Echantillonage( double pas, int taille, double debutIntervalle, double finIntervalle) {
+		this.tailleFenetre=taille;
 		this.debutIntervalle=debutIntervalle;
 		this.finIntervalle=finIntervalle;
-		u=null;
-		f=null;
+		this.pas=pas;
+		u = new ArrayList<Complex>();
+		f = new ArrayList< ArrayList<Complex>>();
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public void prepareFenetre(String fonction){
-		if(fonction.equals("cos(x")){
+		
+		Complex cplx = new Complex(0,0);
+		ArrayList<Complex> v= new ArrayList<Complex>();
+		FFT fenetre = new FFT();
+		
+		if(fonction.equals("sin(x)")){
+			LOGGER.info(" fonction sin(x) detectée ");
 			double i;
-			int j;
-			
-			double pas;
-			pas=(finIntervalle-debutIntervalle)/nbPoint;
-			Complex cplx = new Complex(0,0);
-			ArrayList<Complex> v= new ArrayList<Complex>();
-			FFT fenetre = new FFT();
-			
-			
-			for(i=debutIntervalle; i<finIntervalle; i=i+pas ){
-				Complex complex = new Complex(Math.cos(i),0);
+			for(i=debutIntervalle; i<=finIntervalle; i=i+pas ){
+				Complex complex = new Complex(Math.sin(i),0);
 				u.add(complex);
 			}
-			
-			
-			// parcour le vecteur u est fait des paquet de 2^n quand le vecteur v
-			// v est range dans un tableau de vecteur
-			for(j=0; j<u.size(); j++){
-				if(j%tailleFenetre==0){
-					v=fenetre.fft(v);
-					f.add(v);
-					v = new ArrayList<Complex>(); 
-					LOGGER.info(" Fenetre : " + f.size());
-					fenetre.show(v,"aj");
+		}
+			if(fonction.equals("cos(x)")){
+				LOGGER.info(" fonction cos(x) detectée ");
+				double i;
+				for(i=debutIntervalle; i<=finIntervalle; i=i+pas ){
+					Complex complex = new Complex(Math.cos(i),0);
+					u.add(complex);
 				}
-				v.add(u.get(j));
 			}
+			
+			// indice
+			int j;
+			// flag de premiere boucle
+			int flag;
+			// decalage d indice
+			int c;
+			
+			j=0;
+			c=0;
+			flag=0;
+			
+			LOGGER.debug(" fft ");
+			// parcour le vecteur u 
+			while(j<u.size()){
+				// range le vecteur tampon v 
+				// et en crée un nouveau
+				if( ( j%(tailleFenetre+c) == 0 ) && ( flag ==1 )){
+					// fft du vecteur v
+					v=fenetre.fft(v);
+					// ajoute v dans le tableau de f
+					f.add(v);
+					// reinitialise le vecteur v 
+					v = new ArrayList<Complex>();
+					// cree le decalage d indice
+					c=c+(tailleFenetre/2);
+					j=j-(tailleFenetre/2);
+				}
+				// ajoute un point au vecteur v
+				v.add(u.get(j));
+				j=j+1;
+				// premiere boucle initialise
+				flag=1;
+			}
+			
 			
 			// si la derneire fenetre n est pas en 2^n on la remplit de 0
 			if(v.size()!=tailleFenetre){
-				for(j=v.size();j<=tailleFenetre; j++){
+				for(j=v.size();j<tailleFenetre; j++){
 					v.add(cplx);
 				}
 				v=fenetre.fft(v);
 				f.add(v);
-				fenetre.show(v, "aj ");
 			}
-			
-			
 		}
+	
+	
+	public  void showVecteurAj(){
+		int i;
+		int j;
+		ArrayList<Complex> v =new ArrayList<Complex>();
+		
+		for(i=0; i<f.size();i++){
+			v=f.get(i);
+			LOGGER.info("----------------------- Fenetre "+i+" ---------------------------");
+			for(j=0; j<v.size();j++){
+				LOGGER.info("---- :  "+v.get(j));
+			}
+		}
+	}
+	
+	
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////
+	//Getters and Setters
+	public double getPas() {
+		return pas;
+	}
+
+	public void setPas(double pas) {
+		this.pas = pas;
+	}
+
+	public double getDebutIntervalle() {
+		return debutIntervalle;
+	}
+
+	public void setDebutIntervalle(double debutIntervalle) {
+		this.debutIntervalle = debutIntervalle;
+	}
+
+	public double getFinIntervalle() {
+		return finIntervalle;
+	}
+
+	public void setFinIntervalle(double finIntervalle) {
+		this.finIntervalle = finIntervalle;
+	}
+
+	public int getTailleFenetre() {
+		return tailleFenetre;
+	}
+
+	public void setTailleFenetre(int tailleFenetre) {
+		this.tailleFenetre = tailleFenetre;
+	}
+
+	public ArrayList<Complex> getU() {
+		return u;
+	}
+
+	public void setU(ArrayList<Complex> u) {
+		this.u = u;
+	}
+
+	public ArrayList<ArrayList<Complex>> getF() {
+		return f;
+	}
+
+	public void setF(ArrayList<ArrayList<Complex>> f) {
+		this.f = f;
 	}
 	
 	

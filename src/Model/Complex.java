@@ -152,4 +152,9 @@ package Model;
 	        return Objects.hash(re, im);
 	   
 	    }
+	    
+	    public double module()
+	    {
+	    	return Math.sqrt(re*re+im*im);
+	    }
 }

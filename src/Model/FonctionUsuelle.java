@@ -7,10 +7,11 @@ public class FonctionUsuelle {
 		this.fonctionActuel=fonctionActuel;
 	}
 	
-	public void  traitementSignal()
+	public void  traitementSignal(double pas, int puissanceDe2, double intervalleDebut, double intervalleFin)
 	{
-			Echantillonage ech = new Echantillonage(1024,-Math.PI,Math.PI);
+			Echantillonage ech = new Echantillonage(pas, puissanceDe2, intervalleDebut, intervalleFin);
 			ech.prepareFenetre(fonctionActuel);
+			ech.showVecteurAj();
 	}
 	
 	//getters and setters

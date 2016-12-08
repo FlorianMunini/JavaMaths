@@ -42,7 +42,6 @@ import org.slf4j.Logger;
 	    // compute the FFT of x[], assuming its length is a power of 2
 	    public ArrayList<Complex> fft(ArrayList<Complex> x) {
 	        int n = x.size();
-	        System.out.println("entre");
 	        // base case
 	        if (n == 1){
 	        	ArrayList<Complex> back =new ArrayList<Complex>();
@@ -159,10 +158,10 @@ import org.slf4j.Logger;
 
 	    // display an array of Complex numbers to standard output
 	    public void show(ArrayList<Complex> x, String title) {
-	        LOGGER.info("title");
+	        LOGGER.info(title.toString());
 	        LOGGER.info("-----------------------------");
 	        for (int i = 0; i < x.size(); i++) {
-	        	   LOGGER.info(x.get(i).toString());
+	        	   System.out.println(x.get(i));
 	        }
 	    }
 

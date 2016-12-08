@@ -25,6 +25,7 @@ public class ComplexTest {
         System.out.println("(a / b) * b  = " + a.divides(b).times(b));
         System.out.println("conj(a)      = " + a.conjugate());
         System.out.println("|a|          = " + a.abs());
+        System.out.println(" module      = " + a.module());
         System.out.println("tan(a)       = " + a.tan());
 	}
 
