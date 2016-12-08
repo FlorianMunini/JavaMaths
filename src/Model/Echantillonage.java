@@ -10,16 +10,16 @@ public class Echantillonage {
 	private static final Logger LOGGER= LoggerFactory.getLogger(Echantillonage.class);
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Echantillon
-	double pas;
+	protected double pas;
 	// domaine de definition
-	double debutIntervalle;
-	double finIntervalle;
+	protected double debutIntervalle;
+	protected double finIntervalle;
 	//  taille de la fenetre en 2^n
-	int tailleFenetre;
+	protected int tailleFenetre;
 	//vecteur de complex
-	ArrayList<Complex> u;
+	protected ArrayList<Complex> u;
 	// tableau de vecteur  u
-	ArrayList<ArrayList<Complex>> f;
+	protected ArrayList<ArrayList<Complex>> f;
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
@@ -169,8 +169,5 @@ public class Echantillonage {
 	public void setF(ArrayList<ArrayList<Complex>> f) {
 		this.f = f;
 	}
-	
-	
-	
 	
 }

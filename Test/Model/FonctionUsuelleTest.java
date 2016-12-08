@@ -10,7 +10,6 @@ public class FonctionUsuelleTest {
 	public void test() {
 		double PI = Math.PI;
 		FonctionUsuelle fonction = new FonctionUsuelle("sin(x)");
-		fonction.traitementSignal(PI/4, 4, -PI, PI);
+		fonction.traitementSignal(PI/4, 8, -PI, PI);
 	}
-
 }
