@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -19,6 +20,8 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYDataset;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
+
+import Model.Complex;
 
 /**
  * This program demonstrates how to draw XY line chart with XYDataset
@@ -64,13 +67,26 @@ public class GraphiqueView extends JFrame {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries series1 = new XYSeries("FFT Sinus");
 		
+		/*
 		series1.add(1.0, 3.0);
 		series1.add(2.0, 3.0);
 		series1.add(3.0, 2.5);
 		series1.add(3.5, 2.8);
 		series1.add(4.2, 6.0);
-		series1.add(10.2, 4.0);
-				
+		series1.add(ArrayList<E>); 		
+		 */
+		ArrayList<Complex> v = new ArrayList<Complex>();
+		// parcours l ensemble des vecteurs de f
+		for(int i=0; i<f.size();i++){
+			v=f.get(i);
+			LOGGER.info("recuperation des donnees de la "+ i+ "FFT");
+			for(int j=0; j<v.size();j++){
+				// ajout chaque coordonne de chaque vecteur de f dans series1
+				series1.add(i,v.get(j).module());
+				}
+			}
+		}
+		
 		dataset.addSeries(series1);
 		return dataset;
 	}

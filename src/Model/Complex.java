@@ -153,8 +153,20 @@ package Model;
 	   
 	    }
 	    
+	    
 	    public double module()
 	    {
 	    	return Math.sqrt(re*re+im*im);
 	    }
+	    
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+	    // Getters and Setters
+		public double getRe() {
+			return re;
+		}
+
+		public double getIm() {
+			return im;
+		}
+	    
 }
