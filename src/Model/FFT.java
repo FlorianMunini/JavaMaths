@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ import org.slf4j.Logger;
 	 *  
 	 ******************************************************************************/
 
-	public class FFT {
+	public class FFT extends Observable{
 		
 		
 		private static final Logger LOGGER= LoggerFactory.getLogger(FFT.class);
