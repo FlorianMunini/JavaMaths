@@ -15,6 +15,9 @@
 	<category name="org.edu.ff.cours.logger">
 		<priority value="DEBUG" />
 	</category>
+	<category name="Model">
+		<priority value="DEBUG" />
+	</category>
 	<!--ROOT -->
 	<root>
 		<appender-ref ref="stdout" />

@@ -3,6 +3,10 @@ package Model;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
+
+
 /******************************************************************************
 	 *  Compilation:  javac FFT.java
 	 *  Execution:    java FFT n
@@ -24,11 +28,20 @@ import java.util.Observable;
 	 ******************************************************************************/
 
 	public class FFT extends Observable{
-
+		
+		
+		private static final Logger LOGGER= LoggerFactory.getLogger(FFT.class);
+		
+		// constructeur par defaut
+		public FFT(){
+			
+		}
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
+		
 	    // compute the FFT of x[], assuming its length is a power of 2
 	    public ArrayList<Complex> fft(ArrayList<Complex> x) {
 	        int n = x.size();
-	        System.out.println("entre");
 	        // base case
 	        if (n == 1){
 	        	ArrayList<Complex> back =new ArrayList<Complex>();
@@ -93,13 +106,14 @@ import java.util.Observable;
 	        for (int i = 0; i < n; i++) {
 	            y.add(x.get(i).conjugate());
 	        }
-
+	        
+	        ArrayList<Complex> z = new ArrayList<Complex>();
 	        // divide by n
 	        for (int i = 0; i < n; i++) {
-	           y.add(x.get(i).scale(1.0 / n));
+	           z.add(x.get(i).scale(1.0 / n));
 	        }
 
-	        return y;
+	        return z;
 
 	    }
 
@@ -144,12 +158,11 @@ import java.util.Observable;
 
 	    // display an array of Complex numbers to standard output
 	    public void show(ArrayList<Complex> x, String title) {
-	        System.out.println(title);
-	        System.out.println("-------------------");
+	        LOGGER.info(title.toString());
+	        LOGGER.info("-----------------------------");
 	        for (int i = 0; i < x.size(); i++) {
-	            System.out.println(x.get(i));
+	        	   System.out.println(x.get(i));
 	        }
-	        System.out.println();
 	    }
 
 }
