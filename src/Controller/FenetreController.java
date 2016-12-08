@@ -20,8 +20,12 @@ public class FenetreController {
 	        this.afficheView=aView;
 	    }
 
-	    public void displayViews() {
+	    public void displayFViews() {
 	        this.fenetreView.display();
+	        
+	    }
+	    public void displayAViews() {
+	    	this.afficheView.display();
 	    }
 
 	    public void closeViews() {

@@ -28,6 +28,7 @@ public class FenetreView implements ActionListener, Observer {
 	private JButton button=null;
 	
 	
+	
 	public FenetreView() {
 		setFrame();
 		
@@ -72,14 +73,15 @@ public class FenetreView implements ActionListener, Observer {
 				System.exit(0);
 			}
 		});
-		/*
-		 * load.addActionListener(new ActionListener(){ public void
-		 * actionPerformed(ActionEvent arg0) { Load l=new Load();
-		 * l.main(fft.liste);
-		 * 
-		 * 
-		 * } });
-		 */
+		
+		  nouveauUsuel.addActionListener(new ActionListener(){ public void
+		  actionPerformed(ActionEvent arg0) { 
+			  AfficheValeurView afficheView=new AfficheValeurView();
+				 afficheView.display();
+		 
+		 
+		 } });
+		 
 		/*
 		 * enregistrer.addActionListener(new ActionListener(){ public void
 		 * actionPerformed(ActionEvent arg0) {
@@ -113,9 +115,11 @@ public class FenetreView implements ActionListener, Observer {
 		fPane.setLayout(new GridLayout(2, 1));
 		JPanel tPane = new JPanel();
 		tPane.setLayout(new GridLayout(2, 2));
-
+		
 		JPanel bPane = new JPanel();
-		bPane.setLayout(new GridLayout(3, 3));
+		bPane.setLayout(new GridLayout(1, 1));
+		JPanel ajoutePane = new JPanel();
+		bPane.setLayout(new GridLayout(1, 4));
 
 		JLabel label = new JLabel("Nombre d'échantillon par sec");
 		tPane.add(label, BorderLayout.CENTER);
@@ -139,7 +143,7 @@ public class FenetreView implements ActionListener, Observer {
 		tPane.add(powList, BorderLayout.CENTER);
 
 		button = new JButton("Mettre à jour");
-		bPane.add(button);
+		bPane.add(button, BorderLayout.SOUTH);
 		button.addActionListener(this);
 
 		fPane.add(tPane);
@@ -147,7 +151,12 @@ public class FenetreView implements ActionListener, Observer {
 		frame.setContentPane(fPane);
 		frame.setTitle("Projet Java Maths");
 		frame.pack();
-	
+		button.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent arg0) { 
+				
+				}
+			});
+			 
 
 	
 		
@@ -157,7 +166,7 @@ public class FenetreView implements ActionListener, Observer {
 
 	public void display() {
 		frame.setTitle("Ma première fenêtre Java");
-		frame.setSize(800, 500);
+		frame.setSize(500, 200);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
