@@ -5,18 +5,18 @@ import java.util.ArrayList;
 import Controller.FenetreController;
 import Model.Complex;
 import Model.FFT;
-import View.AfficheValeurView;
 import View.FenetreView;
+import View.GraphiqueView;
 
 public class Main {
 
 	public static void main(String[] args) {
 		FenetreView fView= new FenetreView();
-		AfficheValeurView aView= new AfficheValeurView();
+
+		GraphiqueView gView=new GraphiqueView();
 		FenetreController controller = new FenetreController();
-		controller.init(fView,aView);
+		controller.init(fView,gView);
 		controller.displayFViews();
-		
 	}
 
 }

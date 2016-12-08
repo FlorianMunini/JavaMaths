@@ -36,10 +36,11 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	public void setFrame() {
 		
+		
 		frame = new JFrame();
 		JMenuBar m = new JMenuBar();
 		JMenu menu1 = new JMenu("Fichier");
-		JMenu menu2 = new JMenu("Edition");
+		
 		// separe d'un trait
 
 		JMenu nouveau = new JMenu("Nouveau");
@@ -50,21 +51,12 @@ public class FenetreView implements ActionListener, Observer {
 		JMenuItem nouvelleFonction = new JMenuItem("A partir d'une fonction non définie");
 		nouveau.add(nouvelleFonction);
 		menu1.add(nouveau);
-		JMenuItem annuler = new JMenuItem("Annuler");
-		menu2.add(annuler);
-		/*
-		 * annuler.addActionListener(test); JMenuItem enregistrer= new
-		 * JMenuItem("Enregistrer en .png"); menu1.add(enregistrer);
-		 * menu1.addSeparator(); JMenuItem save= new
-		 * JMenuItem("Enregistrer en .txt"); menu1.add(save);
-		 */
-		JMenuItem load = new JMenuItem("Charger le .txt");
+		JMenuItem load = new JMenuItem("Charger le .wave");
 		menu1.add(load);
 		menu1.addSeparator();
 		JMenuItem quitter = new JMenuItem("Quitter");
 		menu1.add(quitter);
 		m.add(menu1);
-		m.add(menu2);
 
 		frame.setJMenuBar(m);
 
@@ -74,53 +66,15 @@ public class FenetreView implements ActionListener, Observer {
 			}
 		});
 		
-		  nouveauUsuel.addActionListener(new ActionListener(){ public void
-		  actionPerformed(ActionEvent arg0) { 
-			  AfficheValeurView afficheView=new AfficheValeurView();
-				 afficheView.display();
-		 
-		 
-		 } });
-		 
-		/*
-		 * enregistrer.addActionListener(new ActionListener(){ public void
-		 * actionPerformed(ActionEvent arg0) {
-		 * 
-		 * } });
-		 * 
-		 * nouveaudessin.addActionListener(new ActionListener(){ public void
-		 * actionPerformed(ActionEvent arg0) { draw.delete(); } });
-		 * 
-		 * save.addActionListener(new ActionListener(){ public void
-		 * actionPerformed(ActionEvent arg0) { Save s=new Save();
-		 * s.main(draw.liste); } });
-		 * 
-		 * 
-		 */
-
 		quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
-		// nouveaudessin.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N,
-		// KeyEvent.CTRL_DOWN_MASK));
-		// enregistrer.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,
-		// KeyEvent.CTRL_DOWN_MASK));
-		// annuler.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z,
-		// KeyEvent.CTRL_DOWN_MASK));
 
-		
-		
-		
-		
 		fPane = new JPanel();
-
 		fPane.setLayout(new GridLayout(2, 1));
 		JPanel tPane = new JPanel();
-		tPane.setLayout(new GridLayout(2, 2));
+		tPane.setLayout(new GridLayout(3, 2));
 		
 		JPanel bPane = new JPanel();
-		bPane.setLayout(new GridLayout(1, 1));
-		JPanel ajoutePane = new JPanel();
-		bPane.setLayout(new GridLayout(1, 4));
-
+		/*
 		JLabel label = new JLabel("Nombre d'échantillon par sec");
 		tPane.add(label, BorderLayout.CENTER);
 
@@ -134,15 +88,30 @@ public class FenetreView implements ActionListener, Observer {
 				new Integer(5));
 		spinner = new JSpinner(spinnerModel);
 		tPane.add(spinner, BorderLayout.CENTER);
+		 */
+		
+		JLabel label3 = new JLabel("Quelle fonction usuelle voulez vous?");
+		tPane.add(label3);
 
-		JLabel label2 = new JLabel("Nombre d'échantillon");
-		tPane.add(label2, BorderLayout.CENTER);
+		String[] pow2 = { "cos(x)","sin(x)"};
+		JComboBox powList2 = new JComboBox(pow2);
+		tPane.add(powList2);
+		
+		JLabel label = new JLabel("Pas de la courbe");
+		tPane.add(label);
+		JTextField text =new JTextField();
+		tPane.add(text);
 
-		Integer[] pow = { 2, 4, 8, 16, 32, 64, 128, 256, 512 };
+		JLabel label2 = new JLabel("Nombre d'échantillon en puissance de 2");
+		tPane.add(label2);
+
+		Integer[] pow = { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,2048,4096 };
 		JComboBox powList = new JComboBox(pow);
-		tPane.add(powList, BorderLayout.CENTER);
+		tPane.add(powList);
+		
+		
 
-		button = new JButton("Mettre à jour");
+		button = new JButton("Afficher le graphique");
 		bPane.add(button, BorderLayout.SOUTH);
 		button.addActionListener(this);
 
@@ -153,20 +122,17 @@ public class FenetreView implements ActionListener, Observer {
 		frame.pack();
 		button.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent arg0) { 
-				
+				 GraphiqueView gView=new GraphiqueView();
+				 gView.display();
 				}
 			});
-			 
-
-	
-		
 	}
 
 	
 
 	public void display() {
-		frame.setTitle("Ma première fenêtre Java");
-		frame.setSize(500, 200);
+		frame.setTitle("Fonctions usuelles");
+		frame.setSize(500, 400);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
