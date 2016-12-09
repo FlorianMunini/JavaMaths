@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class FonctionUsuelle {
 
 	//// attribut ////
@@ -26,6 +28,26 @@ public class FonctionUsuelle {
 			// affiche en console le resultat obtenu
 			ech.showVecteurAj();
 	}
+	
+	 // renvoie un exemple de FFT
+    public ArrayList<Complex> fftExemple(){
+    	FFT ftt = new FFT();
+        ArrayList<Complex> x = new ArrayList<Complex>();
+
+        // original data
+        Complex n1 = new Complex(1,0);
+        Complex n2 = new Complex(2,0);
+        Complex n3 = new Complex(3,0);
+        Complex n4 = new Complex(4,0);
+        
+        x.add(n1);
+        x.add(n2);
+        x.add(n3);
+        x.add(n4);
+	
+        x=ftt.fft(x);
+        return x;
+    }
 	
 	
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

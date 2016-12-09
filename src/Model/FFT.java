@@ -116,34 +116,6 @@ import org.slf4j.Logger;
 	        return z;
 
 	    }
-	    
-	    // renvoie un exemple de FFT
-	    public ArrayList<Complex> fftExemple(){
-	    	FFT ftt = new FFT();
-	        ArrayList<Complex> x = new ArrayList<Complex>();
-
-	        // original data
-	        Complex n1 = new Complex(0,0);
-	        Complex n2 = new Complex(1,0);
-	        Complex n3 = new Complex(0,0);
-	        Complex n4 = new Complex(1,0);
-	        Complex n5 = new Complex(0,0);
-	        Complex n6 = new Complex(1,0);
-	        Complex n7 = new Complex(1,0);
-	        Complex n8 = new Complex(1,0);
-	        
-	        x.add(n1);
-	        x.add(n2);
-	        x.add(n3);
-	        x.add(n4);
-	        x.add(n5);
-	        x.add(n6);
-	        x.add(n7);
-	        x.add(n8);
-		
-	        x=ftt.fft(x);
-	        return x;
-	    }
 
 	    // display an array of Complex numbers to standard output
 	    public void show(ArrayList<Complex> x, String title) {
