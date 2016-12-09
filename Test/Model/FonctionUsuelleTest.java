@@ -22,6 +22,5 @@ public class FonctionUsuelleTest {
 		for(int i=0; i<f.size(); i++){
 			//LOGGER.info("Re :"+f.get(i).getRe()+)
 		}
->>>>>>> b53a75d01e1323bb7f9868f587755fde4a3d9a27
 	}
 }

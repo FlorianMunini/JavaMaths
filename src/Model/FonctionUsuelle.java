@@ -23,8 +23,14 @@ public class FonctionUsuelle {
 	{
 			
 			Echantillonage ech = new Echantillonage(pas, puissanceDe2, intervalleDebut, intervalleFin);
-			return ech.prepareFenetre(fonctionActuel);
-
+			ArrayList<ArrayList<Complex>> f = new ArrayList<ArrayList<Complex>>();
+			f=ech.prepareFenetre(fonctionActuel);
+			for(int i = 0; i<f.size(); i++){
+				for(int j=0; j<f.get(i).size(); j++){
+					f.get(i).get(j).module();
+				}
+			}
+			return f;
 	}
 	
 	 // renvoie un exemple de FFT
