@@ -6,12 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.JButton;
 
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -26,7 +23,6 @@ import javax.swing.JScrollPane;
 import javax.swing.KeyStroke;
 import javax.swing.ListSelectionModel;
 
-import Controller.FenetreController;
 import Model.Complex;
 import Model.FFT;
 import Model.FonctionUsuelle;
@@ -40,16 +36,8 @@ public class ListeView implements ActionListener, Observer {
 		
 		private ArrayList<Complex> x =null;
 		private FonctionUsuelle fonction =null;
-		
-		
-		//private JList list=null; 
-		//private FenetreController controller = null;
 		private JPanel fPane=null;
-		//private NumberFormat format = null;
-		
-		private JButton button=null;
-		
-		private JFormattedTextField text = null;
+	//	private JFormattedTextField text = null;
 		
 		
 		
@@ -84,37 +72,22 @@ public class ListeView implements ActionListener, Observer {
 
 			frame.setJMenuBar(m);
 
-			quitter.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent arg0) {
-					
-				}
-			});
 			
 			quitter.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_DOWN_MASK));
 
+			quitter.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					  System.exit(0);
+				}
+			});
+			
 			fPane = new JPanel();
 			fPane.setLayout(new GridLayout(1, 2));
-			
-			/*
-			JLabel label = new JLabel("Nombre d'échantillon par sec");
-			tPane.add(label, BorderLayout.CENTER);
-
-			format = NumberFormat.getNumberInstance();
-			format.setParseIntegerOnly(true);
-			format.setGroupingUsed(false);
-			format.setMaximumFractionDigits(0);
-			format.setMaximumIntegerDigits(3);
-
-			SpinnerNumberModel spinnerModel = new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(100),
-					new Integer(5));
-			spinner = new JSpinner(spinnerModel);
-			tPane.add(spinner, BorderLayout.CENTER);
-			 	*/
 			fonction = new FonctionUsuelle("Exemple");
 			String[] tab1=new String [1000];
 			String[] tab2=new String [1000];
 			for(int i=1; i<=4; i++){
-			tab1[i]= (i+"+"+"   0i   "+"\n");
+			tab1[i]= (i+"+"+"0i   "+"\n");
 			
 			}
 			 x = new ArrayList<Complex>();
@@ -123,8 +96,6 @@ public class ListeView implements ActionListener, Observer {
 				tab2[i]=(x.get(i).getRe()+"+"+x.get(i).getIm()+"\n");
 				
 			}
-		
-			
 		
 			JList list = new JList(tab1); //data has type Object[]
 	        JScrollPane listScroller = new JScrollPane(list);
@@ -144,19 +115,12 @@ public class ListeView implements ActionListener, Observer {
 
 
 	        listScroller2.setPreferredSize(new Dimension(500, 200));
-	        fPane.add(listScroller2, BorderLayout.CENTER);
-
-		
-
-			
+	        fPane.add(listScroller2, BorderLayout.CENTER);	
 			frame.setContentPane(fPane);
 			frame.setTitle("Projet Java Maths");
 			frame.pack();
 			
 		}
-
-		
-
 		public void display() {
 			frame.setTitle("Liste Test");
 			frame.setSize(500, 400);

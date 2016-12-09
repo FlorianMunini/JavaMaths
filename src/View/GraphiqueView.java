@@ -22,6 +22,7 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
 import Model.Complex;
+import Model.FonctionUsuelle;
 
 /**
  * This program demonstrates how to draw XY line chart with XYDataset
@@ -32,25 +33,25 @@ import Model.Complex;
 
 public class GraphiqueView extends JFrame {
 	private JFrame frame3=null;
-	private ArrayList<ArrayList<Complex>> AA=null;
+
 	public GraphiqueView() {
-		createChartPanel(AA);
+		createChartPanel();
 	}
 	
-	private JPanel createChartPanel( ArrayList<ArrayList<Complex>> f) {
+	private JPanel createChartPanel() {
 		
 		String chartTitle = "FFT";
 		String xAxisLabel = "X";
 		String yAxisLabel = "Y";
 		
-		XYDataset dataset = createDataset(f);
+		XYDataset dataset = createDataset();
 		
 		JFreeChart chart = ChartFactory.createXYLineChart(chartTitle,xAxisLabel, yAxisLabel, dataset,PlotOrientation.VERTICAL,false,false,false);
 		
 		
 		customizeChart(chart);
 		
-		// saves the chart as an image files
+		// Sauvegarde le graphique en .png
 		File imageFile = new File("Graphique FFT.png");
 		int width = 640;
 		int height = 480;
@@ -64,22 +65,12 @@ public class GraphiqueView extends JFrame {
 		return new ChartPanel(chart);
 	}
 
-	private XYDataset createDataset(ArrayList<ArrayList<Complex>> f) {
+	private XYDataset createDataset() {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries series1 = new XYSeries("FFT Sinus");
-		/*
-		series1.add(1.0, 3.0);
-		series1.add(2.0, 3.0);
-		series1.add(3.0, 2.5);
-		series1.add(3.5, 2.8);
-		series1.add(4.2, 6.0);
-
-	//	series1.add(ArrayList<E>); 		
-		 
-
-		*/
-
-		
+		FonctionUsuelle fonction = new FonctionUsuelle("sin(x)");
+		ArrayList<ArrayList<Complex>> f = new ArrayList<ArrayList<Complex>>();
+		f = fonction.traitementSignal(Math.PI/8, 4, -Math.PI, Math.PI);
 
 		ArrayList<Complex> v = new ArrayList<Complex>();
 		// parcours l ensemble des vecteurs de f
@@ -128,7 +119,7 @@ public class GraphiqueView extends JFrame {
 	}
 	public void display() {
 		frame3 = new JFrame();
-		JPanel chartPanel = createChartPanel(AA);
+		JPanel chartPanel=createChartPanel();
 		frame3.add(chartPanel, BorderLayout.CENTER);
 		frame3.setTitle("Graphique de la FFT");
 		frame3.setSize(800, 800);
@@ -139,6 +130,7 @@ public class GraphiqueView extends JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			
 			public void run() {
+				
 				new GraphiqueView().setVisible(true);
 				
 			}

@@ -15,7 +15,7 @@ import javax.swing.*;
 import Controller.FenetreController;
 
 import Model.FFT;
-import Model.Load;
+
 
 public class FenetreView implements ActionListener, Observer {
 
@@ -23,8 +23,6 @@ public class FenetreView implements ActionListener, Observer {
 	private JFrame frame=null;
 	private FenetreController controller = null;
 	private JPanel fPane=null;
-	private NumberFormat format = null;
-	private JSpinner spinner=null;
 	private JButton button=null;
 	private JFormattedTextField text = null;
 	private JComboBox powList2 =null;
@@ -44,8 +42,6 @@ public class FenetreView implements ActionListener, Observer {
 		frame = new JFrame();
 		JMenuBar m = new JMenuBar();
 		JMenu menu1 = new JMenu("Fichier");
-		
-		// separe d'un trait
 
 		JMenu nouveau = new JMenu("Nouveau");
 		JMenuItem nouveauSon = new JMenuItem("A partir d'un fichier son");
@@ -77,23 +73,7 @@ public class FenetreView implements ActionListener, Observer {
 		JPanel tPane = new JPanel();
 		tPane.setLayout(new GridLayout(3, 2));
 		
-		JPanel bPane = new JPanel();
-		/*
-		JLabel label = new JLabel("Nombre d'échantillon par sec");
-		tPane.add(label, BorderLayout.CENTER);
-
-		format = NumberFormat.getNumberInstance();
-		format.setParseIntegerOnly(true);
-		format.setGroupingUsed(false);
-		format.setMaximumFractionDigits(0);
-		format.setMaximumIntegerDigits(3);
-
-		SpinnerNumberModel spinnerModel = new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(100),
-				new Integer(5));
-		spinner = new JSpinner(spinnerModel);
-		tPane.add(spinner, BorderLayout.CENTER);
-		 */
-		
+		JPanel bPane = new JPanel();		
 		JLabel label3 = new JLabel("Quelle fonction usuelle voulez vous?");
 		tPane.add(label3);
 
@@ -124,9 +104,15 @@ public class FenetreView implements ActionListener, Observer {
 		frame.setContentPane(fPane);
 		frame.setTitle("Projet Java Maths");
 		frame.pack();
+		quitter.addActionListener(new ActionListener(){
+		    public void actionPerformed(ActionEvent arg0) {
+		      System.exit(0);
+		    }      
+		  });
 		button.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent arg0) { 
-				
+				 GraphiqueView gView=new GraphiqueView();
+				 gView.display();
 				}
 			});
 		nouvelleFonction.addActionListener(new ActionListener(){ 
@@ -165,9 +151,18 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 }
 
 	   
+=======
+
+		 	//  Commencement de lien entre la view et le model pour changé a partir des valeur que on aura set sur cette view le graphique
+	    	//  this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()),this.getPowList2().getSelectedItem().toString(),Integer.parseInt(this.getPowList().getSelectedItem().toString()));
+	    	  
+	      }
+
+>>>>>>> master
 
 	   
 	    public void update(Observable o, Object arg) {

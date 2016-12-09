@@ -41,10 +41,16 @@ public class Echantillonage {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 
 	//// Methods ////
 	
 	public ArrayList<ArrayList<Complex>> prepareFenetre(String fonction){
+=======
+	
+	public ArrayList<ArrayList<Complex>> prepareFenetre(String fonction){
+
+>>>>>>> master
 		
 		Complex cplx = new Complex(0,0);
 		ArrayList<Complex> v= new ArrayList<Complex>();

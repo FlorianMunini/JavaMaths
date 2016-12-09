@@ -14,41 +14,20 @@ import java.util.ArrayList;
 import View.FenetreView;
 
 public class Load {
-	protected int size;
-	private static FenetreView frame;
+//	protected int size;
+//	private static FenetreView frame;
 
 	public Load() {
 		super();
-		this.size = 0;
+	//	this.size = 0;
 	}
 
 	public void main(ArrayList<Complex> liste) { // throws FileNotFoundException,
-												// IOException {
+		/*										// IOException {
 
-	/*	DataInputStream dis;
-		FileDialog fDialog = new FileDialog(frame, "Charger size en txt un _size.txt", FileDialog.LOAD);
-
-		fDialog.setVisible(true);
-		String path = fDialog.getDirectory() + fDialog.getFile();
-
-		if (fDialog.getFile() == null)
-			System.out.println("Save annulée");
-		else {
-			if ((path.endsWith("_size.txt"))) {
-				System.out.println("pas .txt");
-				try {
-					// On récupère maintenant les données !
-					dis = new DataInputStream(new BufferedInputStream(new FileInputStream(new File(path))));
-
-					size = dis.readInt();
-
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-*/
-		/*			ObjectInputStream ois = null;
+		DataInputStream dis;
+		
+				ObjectInputStream ois = null;
 			FileDialog sDialog = new FileDialog(frame, "Charger en txt un _figures.txt", FileDialog.LOAD);
 
 				sDialog.setVisible(true);
@@ -58,7 +37,7 @@ public class Load {
 				if (sDialog.getFile() == null)
 					System.out.println("Save annulée");
 				else {
-					if ((path2.endsWith("_figures.txt"))) {
+					if ((path2.endsWith(".wave"))) {
 						try {
 
 							// On récupère maintenant les données !
@@ -92,6 +71,8 @@ public class Load {
 				*/
 			}
 		
-	}
+		}
+	
+
 
 

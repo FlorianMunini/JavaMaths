@@ -2,6 +2,9 @@ package Controller;
 
 
 
+import java.util.ArrayList;
+
+import Model.Complex;
 import Model.FonctionUsuelle;
 import View.FenetreView;
 import View.GraphiqueView;
@@ -13,6 +16,7 @@ public class FenetreController {
 	public FenetreView fenetreView = null;
 	public ListeView listeView=null;
 	public GraphiqueView graphView=null;
+	private ArrayList<ArrayList<Complex>> AA=null;
 	
 	public FenetreController() {
 
@@ -55,10 +59,12 @@ public class FenetreController {
 		      this.graphView.close();    
 		    }
 	    
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	    public void notifyFonctionSet(int pas, String fct, int nbEch){
+	    	// Probleme de récupération manque de temps pour passer en attributs
+	    	fonctionU.setFonctionActuel(fct);
+	    	AA=fonctionU.traitementSignal(pas,nbEch, -Math.PI, Math.PI);
+	    	
+	    }
 
-	}
 
 }
