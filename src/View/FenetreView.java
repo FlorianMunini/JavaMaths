@@ -26,6 +26,7 @@ public class FenetreView implements ActionListener, Observer {
 	private NumberFormat format = null;
 	private JSpinner spinner=null;
 	private JButton button=null;
+	private JFormattedTextField text = null;
 	
 	
 	
@@ -48,7 +49,7 @@ public class FenetreView implements ActionListener, Observer {
 		nouveau.add(nouveauSon);
 		JMenuItem nouveauUsuel = new JMenuItem("A partir d'une fonction usuelle");
 		nouveau.add(nouveauUsuel);
-		JMenuItem nouvelleFonction = new JMenuItem("A partir d'une fonction non définie");
+		JMenuItem nouvelleFonction = new JMenuItem("A partir d'une fonction non définie test");
 		nouveau.add(nouvelleFonction);
 		menu1.add(nouveau);
 		JMenuItem load = new JMenuItem("Charger le .wave");
@@ -62,7 +63,7 @@ public class FenetreView implements ActionListener, Observer {
 
 		quitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				System.exit(0);
+				
 			}
 		});
 		
@@ -126,13 +127,25 @@ public class FenetreView implements ActionListener, Observer {
 				 gView.display();
 				}
 			});
+		nouvelleFonction.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent arg0) { 
+				 ListeView lView=new ListeView();
+				 lView.display();
+				}
+			});
+		nouveauUsuel.addActionListener(new ActionListener(){ 
+			public void actionPerformed(ActionEvent arg0) { 
+				 FenetreView fView=new FenetreView();
+				 fView.display();
+				}
+			});
 	}
 
 	
 
 	public void display() {
 		frame.setTitle("Fonctions usuelles");
-		frame.setSize(500, 400);
+		frame.setSize(600, 300);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -144,7 +157,7 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
-
+		// this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()));
 	      
 	    }
 

@@ -67,14 +67,14 @@ public class GraphiqueView extends JFrame {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries series1 = new XYSeries("FFT Sinus");
 		
-		/*
 		series1.add(1.0, 3.0);
 		series1.add(2.0, 3.0);
 		series1.add(3.0, 2.5);
 		series1.add(3.5, 2.8);
 		series1.add(4.2, 6.0);
-		series1.add(ArrayList<E>); 		
-		 */
+		//series1.add(ArrayList<E>); 		
+
+		/*
 		ArrayList<Complex> v = new ArrayList<Complex>();
 		// parcours l ensemble des vecteurs de f
 		for(int i=0; i<f.size();i++){
@@ -86,7 +86,7 @@ public class GraphiqueView extends JFrame {
 				}
 			}
 		}
-		
+		 */
 		dataset.addSeries(series1);
 		return dataset;
 	}
