@@ -32,14 +32,14 @@ import org.slf4j.Logger;
 		
 		private static final Logger LOGGER= LoggerFactory.getLogger(FFT.class);
 		
-		// constructeur par defaut
+		//// constructeur par defaut ////
 		public FFT(){
 			
 		}
 		
-		/////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-	    // compute the FFT of x[], assuming its length is a power of 2
+	    // FFT prenant en compte une taille fenetre de 2^n
 	    public ArrayList<Complex> fft(ArrayList<Complex> x) {
 	        int n = x.size();
 	        // base case
@@ -49,10 +49,10 @@ import org.slf4j.Logger;
 	        	return back;
 	        }
 
-	        // radix 2 Cooley-Tukey FFT
+	        // test le 2^n
 	        if (n % 2 != 0) { throw new RuntimeException("n is not a power of 2"); }
 
-	        // fft of even terms
+	        // fft valeur pair
 	        ArrayList<Complex> even = new ArrayList<Complex>();
 	        for (int k = 0; k < n/2; k++) {
 	            even.add(x.get(2*k));
@@ -60,7 +60,7 @@ import org.slf4j.Logger;
 	        ArrayList<Complex> q = new ArrayList<Complex>();
 	        q=fft(even);
 
-	        // fft of odd terms
+	        // fft valeur impair
 	        ArrayList<Complex> odd = new ArrayList<Complex>();
 	        for (int k = 0; k < n/2; k++) {
 	            odd.add(x.get(2*k+1));
@@ -68,22 +68,22 @@ import org.slf4j.Logger;
 	        ArrayList<Complex> r = new ArrayList<Complex>();
 	        r=fft(odd);
 
-	        // combine
+	        
 	        ArrayList<Complex> y = new ArrayList<Complex>();
 	        ArrayList<Complex> v = new ArrayList<Complex>();
+	        
+	        // remonte de la recursion avec l'application des Wk
 	        for (int k = 0; k < n/2; k++) {
 	            double kth = -2 * k * Math.PI / n;
 	            Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
+	            // range coef de 1->N/2
 	            y.add( q.get(k).plus( wk.times( r.get(k) ) ) );
+	            // range coef de N/2->
 	            v.add( q.get(k).minus( wk.times( r.get(k) ) ) );
 	   	        }
+	        // ajoute les N/2 à N valeur dans y 
+	        // => y de 1 à N
 	        y.addAll(v);
-	        /*for(int k=n/2; k<n; k++) {
-	        	double kth = ((-2 * k * Math.PI)-(n/2)) / n;
-	            Complex wk = new Complex(Math.cos(kth), Math.sin(kth));
-	            System.out.println(kth);
-	            y.add( q.get(k-(n/2)).minus( wk.times( r.get(k-(n/2)) ) ) );
-	        }*/
 	        
 	        return y;
 	    }
@@ -116,45 +116,34 @@ import org.slf4j.Logger;
 	        return z;
 
 	    }
+	    
+	    // renvoie un exemple de FFT
+	    public ArrayList<Complex> fftExemple(){
+	    	FFT ftt = new FFT();
+	        ArrayList<Complex> x = new ArrayList<Complex>();
 
-	    // compute the circular convolution of x and y
-	   /* public static Complex[] cconvolve(Complex[] x, Complex[] y) {
-
-	        // should probably pad x and y with 0s so that they have same length
-	        // and are powers of 2
-	        if (x.length != y.length) { throw new RuntimeException("Dimensions don't agree"); }
-
-	        int n = x.length;
-
-	        // compute FFT of each sequence
-	        Complex[] a = fft(x);
-	        Complex[] b = fft(y);
-
-	        // point-wise multiply
-	        Complex[] c = new Complex[n];
-	        for (int i = 0; i < n; i++) {
-	            c[i] = a[i].times(b[i]);
-	        }
-
-	        // compute inverse FFT
-	        return ifft(c);
+	        // original data
+	        Complex n1 = new Complex(0,0);
+	        Complex n2 = new Complex(1,0);
+	        Complex n3 = new Complex(0,0);
+	        Complex n4 = new Complex(1,0);
+	        Complex n5 = new Complex(0,0);
+	        Complex n6 = new Complex(1,0);
+	        Complex n7 = new Complex(1,0);
+	        Complex n8 = new Complex(1,0);
+	        
+	        x.add(n1);
+	        x.add(n2);
+	        x.add(n3);
+	        x.add(n4);
+	        x.add(n5);
+	        x.add(n6);
+	        x.add(n7);
+	        x.add(n8);
+		
+	        x=ftt.fft(x);
+	        return x;
 	    }
-
-
-	    // compute the linear convolution of x and y
-	    public static Complex[] convolve(Complex[] x, Complex[] y) {
-	        Complex ZERO = new Complex(0, 0);
-
-	        Complex[] a = new Complex[2*x.length];
-	        for (int i = 0;        i <   x.length; i++) a[i] = x[i];
-	        for (int i = x.length; i < 2*x.length; i++) a[i] = ZERO;
-
-	        Complex[] b = new Complex[2*y.length];
-	        for (int i = 0;        i <   y.length; i++) b[i] = y[i];
-	        for (int i = y.length; i < 2*y.length; i++) b[i] = ZERO;
-
-	        return cconvolve(a, b);
-	    } */ 
 
 	    // display an array of Complex numbers to standard output
 	    public void show(ArrayList<Complex> x, String title) {

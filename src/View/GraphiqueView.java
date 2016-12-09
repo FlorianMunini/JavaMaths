@@ -74,7 +74,7 @@ public class GraphiqueView extends JFrame {
 		series1.add(3.5, 2.8);
 		series1.add(4.2, 6.0);
 		series1.add(ArrayList<E>); 		
-		 */
+		 
 		ArrayList<Complex> v = new ArrayList<Complex>();
 		// parcours l ensemble des vecteurs de f
 		for(int i=0; i<f.size();i++){
@@ -87,7 +87,7 @@ public class GraphiqueView extends JFrame {
 			}
 		}
 		
-		dataset.addSeries(series1);
+		dataset.addSeries(series1);*/
 		return dataset;
 	}
 	

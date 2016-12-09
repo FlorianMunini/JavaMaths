@@ -7,8 +7,14 @@ import org.slf4j.LoggerFactory;
 
 public class Echantillonage {
 	
+	// initialisation logger
 	private static final Logger LOGGER= LoggerFactory.getLogger(Echantillonage.class);
+	
+	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//// Attribut //// 
+	
 	// Echantillon
 	protected double pas;
 	// domaine de definition
@@ -23,6 +29,8 @@ public class Echantillonage {
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	//// Constructeur ////
+	
 	public Echantillonage( double pas, int taille, double debutIntervalle, double finIntervalle) {
 		this.tailleFenetre=taille;
 		this.debutIntervalle=debutIntervalle;
@@ -33,6 +41,8 @@ public class Echantillonage {
 	}
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	//// Methods ////
 	
 	public void prepareFenetre(String fonction){
 		
@@ -121,7 +131,8 @@ public class Echantillonage {
 	
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////
-	//Getters and Setters
+	
+	////Getters and Setters////
 	public double getPas() {
 		return pas;
 	}
