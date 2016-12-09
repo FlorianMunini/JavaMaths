@@ -56,6 +56,8 @@ public class FenetreController {
 		    }
 	    
 	    public void notifyFonctionSet(int pas, String fct, int nbEch){
+	    	fonctionU.setFonctionActuel(fct);
+	    	
 	    	
 	    }
 	

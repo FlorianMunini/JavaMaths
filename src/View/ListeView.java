@@ -37,9 +37,11 @@ public class ListeView implements ActionListener, Observer {
 		
 		protected FFT fft;
 		private JFrame frame=null;
-		private String tab1[];
 		
-		private String tab2[];
+		private ArrayList<Complex> x =null;
+		private FonctionUsuelle fonction =null;
+		
+		
 		//private JList list=null; 
 		//private FenetreController controller = null;
 		private JPanel fPane=null;
@@ -107,19 +109,24 @@ public class ListeView implements ActionListener, Observer {
 					new Integer(5));
 			spinner = new JSpinner(spinnerModel);
 			tPane.add(spinner, BorderLayout.CENTER);
-			 	
-			FonctionUsuelle fonction = new FonctionUsuelle("Exemple");
-			tab1[1]= "1 + 0i";
-			tab1[2]= "2 + 0i";
-			tab1[3]= "3 + 0i";
-			tab1[4]= "4 + 0i";
+			 	*/
+			fonction = new FonctionUsuelle("Exemple");
+			String[] tab1=new String [1000];
+			String[] tab2=new String [1000];
+			for(int i=1; i<=4; i++){
+			tab1[i]= (i+"+"+"   0i   "+"\n");
 			
-			ArrayList<Complex> x = new ArrayList<Complex>();
-			x=fonction.fft
+			}
+			 x = new ArrayList<Complex>();
+			x=fonction.fftExemple();
+			for(int i=0; i<x.size(); i++){
+				tab2[i]=(x.get(i).getRe()+"+"+x.get(i).getIm()+"\n");
+				
+			}
 		
-			*/
+			
 		
-			JList list = new JList(); //data has type Object[]
+			JList list = new JList(tab1); //data has type Object[]
 	        JScrollPane listScroller = new JScrollPane(list);
 	        list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 	        list.setLayoutOrientation(JList.HORIZONTAL_WRAP);
@@ -129,7 +136,7 @@ public class ListeView implements ActionListener, Observer {
 	        listScroller.setPreferredSize(new Dimension(500, 200));
 	        fPane.add(listScroller, BorderLayout.CENTER);
 			
-	        JList list2 = new JList(); //data has type Object[]
+	        JList list2 = new JList(tab2); //data has type Object[]
 	        JScrollPane listScroller2 = new JScrollPane(list2);
 	        list2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 	        list2.setLayoutOrientation(JList.HORIZONTAL_WRAP);

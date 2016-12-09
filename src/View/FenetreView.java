@@ -27,6 +27,9 @@ public class FenetreView implements ActionListener, Observer {
 	private JSpinner spinner=null;
 	private JButton button=null;
 	private JFormattedTextField text = null;
+	private JComboBox powList2 =null;
+	private JComboBox powList =null;
+	
 	
 	
 	
@@ -95,7 +98,7 @@ public class FenetreView implements ActionListener, Observer {
 		tPane.add(label3);
 
 		String[] pow2 = { "cos(x)","sin(x)"};
-		JComboBox powList2 = new JComboBox(pow2);
+		powList2 = new JComboBox(pow2);
 		tPane.add(powList2);
 		
 		JLabel label = new JLabel("Pas de la courbe");
@@ -107,7 +110,7 @@ public class FenetreView implements ActionListener, Observer {
 		tPane.add(label2);
 
 		Integer[] pow = { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,2048,4096 };
-		JComboBox powList = new JComboBox(pow);
+		powList = new JComboBox(pow);
 		tPane.add(powList);
 		
 		
@@ -123,8 +126,7 @@ public class FenetreView implements ActionListener, Observer {
 		frame.pack();
 		button.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent arg0) { 
-				 GraphiqueView gView=new GraphiqueView();
-				 gView.display();
+				
 				}
 			});
 		nouvelleFonction.addActionListener(new ActionListener(){ 
@@ -151,14 +153,26 @@ public class FenetreView implements ActionListener, Observer {
 		frame.setVisible(true);
 	}
 
+	public JComboBox getPowList() {
+		return powList;
+	}
+	public JComboBox getPowList2() {
+		return powList2;
+	}
 	public void close() {
 
 		frame.dispose();
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
-		// this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()));
+		
+	      Object contenu=e.getActionCommand();
+	      if (contenu.equals("Afficher le graphique")){
+	    	  GraphiqueView gView=new GraphiqueView();
+				
+	    	  this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()),this.getPowList2().getSelectedItem().toString(),Integer.parseInt(this.getPowList().getSelectedItem().toString()));
 	      
+	      }
 	    }
 
 	   
