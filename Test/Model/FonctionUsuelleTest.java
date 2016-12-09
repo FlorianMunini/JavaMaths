@@ -20,7 +20,9 @@ public class FonctionUsuelleTest {
 		ArrayList<ArrayList<Complex>> f = new ArrayList<ArrayList<Complex>>();
 		f=fonction.traitementSignal(PI/4, 4, -PI, PI);
 		for(int i=0; i<f.size(); i++){
-			//LOGGER.info("Re :"+f.get(i).getRe()+)
+			for(int j=0; j<f.get(i).size(); j++){
+			LOGGER.info("Re :"+f.get(i).get(j).getRe()+" Im :"+f.get(i).get(j).getIm());
+			}
 		}
 	}
 
