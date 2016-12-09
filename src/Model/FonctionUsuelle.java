@@ -19,14 +19,12 @@ public class FonctionUsuelle {
 	//// Methodes ////
 	
 	// fait une analyse du signal
-	public void  traitementSignal(double pas, int puissanceDe2, double intervalleDebut, double intervalleFin)
+	public ArrayList<ArrayList<Complex>>  traitementSignal(double pas, int puissanceDe2, double intervalleDebut, double intervalleFin)
 	{
 			
 			Echantillonage ech = new Echantillonage(pas, puissanceDe2, intervalleDebut, intervalleFin);
-			// prepare les fenetres et fais la FFT de chacune d elle
-			ech.prepareFenetre(fonctionActuel);
-			// affiche en console le resultat obtenu
-			ech.showVecteurAj();
+			return ech.prepareFenetre(fonctionActuel);
+
 	}
 	
 	 // renvoie un exemple de FFT

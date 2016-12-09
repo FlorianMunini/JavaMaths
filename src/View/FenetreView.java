@@ -165,6 +165,7 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
+<<<<<<< HEAD
 		
 	      Object contenu=e.getActionCommand();
 	      if (contenu.equals("Afficher le graphique")){
@@ -173,6 +174,12 @@ public class FenetreView implements ActionListener, Observer {
 	    	  this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()),this.getPowList2().getSelectedItem().toString(),Integer.parseInt(this.getPowList().getSelectedItem().toString()));
 	      
 	      }
+=======
+		 Object contenu = e.getActionCommand();
+		 if(contenu.equals("Afficher le graphique")){
+			 
+		 }
+>>>>>>> b53a75d01e1323bb7f9868f587755fde4a3d9a27
 	    }
 
 	   
