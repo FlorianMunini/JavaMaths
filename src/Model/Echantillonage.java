@@ -34,7 +34,7 @@ public class Echantillonage {
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public void prepareFenetre(String fonction){
+	public ArrayList<ArrayList<Complex>> prepareFenetre(String fonction){
 		
 		Complex cplx = new Complex(0,0);
 		ArrayList<Complex> v= new ArrayList<Complex>();
@@ -100,6 +100,7 @@ public class Echantillonage {
 				v=fenetre.fft(v);
 				f.add(v);
 			}
+			return f;
 		}
 	
 	

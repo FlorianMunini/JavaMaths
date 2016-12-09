@@ -43,6 +43,7 @@ public class FenetreController {
 	    	  this.fenetreView.close();    
 		      this.graphView.close();    
 		    }
+	    
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

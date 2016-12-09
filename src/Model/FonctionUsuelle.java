@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class FonctionUsuelle {
 
 	String fonctionActuel;
@@ -7,11 +9,10 @@ public class FonctionUsuelle {
 		this.fonctionActuel=fonctionActuel;
 	}
 	
-	public void  traitementSignal(double pas, int puissanceDe2, double intervalleDebut, double intervalleFin)
+	public ArrayList<ArrayList<Complex>>  traitementSignal(double pas, int puissanceDe2, double intervalleDebut, double intervalleFin)
 	{
 			Echantillonage ech = new Echantillonage(pas, puissanceDe2, intervalleDebut, intervalleFin);
-			ech.prepareFenetre(fonctionActuel);
-			ech.showVecteurAj();
+			return ech.prepareFenetre(fonctionActuel);
 	}
 	
 	//getters and setters

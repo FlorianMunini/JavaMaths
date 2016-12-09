@@ -144,8 +144,10 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
-
-	      
+		 Object contenu = e.getActionCommand();
+		 if(contenu.equals("Afficher le graphique")){
+			 
+		 }
 	    }
 
 	   
