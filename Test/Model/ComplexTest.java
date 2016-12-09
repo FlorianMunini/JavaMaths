@@ -12,7 +12,7 @@ public class ComplexTest {
 	public void test() {
 		Complex a = new Complex(5.0, 6.0);
         Complex b = new Complex(-3.0, 4.0);
-
+        // affiche l ensemble des resultats des methodes
         System.out.println("a            = " + a);
         System.out.println("b            = " + b);
         System.out.println("Re(a)        = " + a.re());

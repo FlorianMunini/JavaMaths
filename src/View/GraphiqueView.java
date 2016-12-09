@@ -40,9 +40,9 @@ public class GraphiqueView extends JFrame {
 	
 	private JPanel createChartPanel() {
 		
-		String chartTitle = "FFT";
-		String xAxisLabel = "X";
-		String yAxisLabel = "Y";
+		String chartTitle = "Spéctrogramme";
+		String xAxisLabel = "Temps";
+		String yAxisLabel = "Module";
 		
 		XYDataset dataset = createDataset();
 		
@@ -70,7 +70,7 @@ public class GraphiqueView extends JFrame {
 		XYSeries series1 = new XYSeries("FFT Sinus");
 		FonctionUsuelle fonction = new FonctionUsuelle("sin(x)");
 		ArrayList<ArrayList<Complex>> f = new ArrayList<ArrayList<Complex>>();
-		f = fonction.traitementSignal(Math.PI/8, 4, -Math.PI, Math.PI);
+		f = fonction.traitementSignal(Math.PI/200, 4, -Math.PI, Math.PI);
 
 		ArrayList<Complex> v = new ArrayList<Complex>();
 		// parcours l ensemble des vecteurs de f
@@ -99,7 +99,9 @@ public class GraphiqueView extends JFrame {
 
 		// sets paint color for each series
 		renderer.setSeriesPaint(0, Color.RED);
-
+		
+	     
+	        
 		// sets thickness for series (using strokes)
 		renderer.setSeriesStroke(0, new BasicStroke(1.0f));
 		
@@ -121,7 +123,7 @@ public class GraphiqueView extends JFrame {
 		frame3 = new JFrame();
 		JPanel chartPanel=createChartPanel();
 		frame3.add(chartPanel, BorderLayout.CENTER);
-		frame3.setTitle("Graphique de la FFT");
+		frame3.setTitle("Graphique du Spéctrogramme");
 		frame3.setSize(800, 800);
 		frame3.setLocation(800, 100);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

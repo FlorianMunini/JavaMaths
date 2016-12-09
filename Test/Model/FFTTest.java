@@ -13,7 +13,7 @@ public class FFTTest {
 		FFT ftt = new FFT();
         ArrayList<Complex> x = new ArrayList<Complex>();
 
-        // original data
+        // données initiales
         Complex n1 = new Complex(1,0);
         Complex n2 = new Complex(2,0);
         Complex n3 = new Complex(3,0);
@@ -28,15 +28,16 @@ public class FFTTest {
         x.add(n2);
         x.add(n3);
         x.add(n4);
-       /* x.add(n5);
+        x.add(n5);
         x.add(n6);
         x.add(n7);
-        x.add(n8);*/
+        x.add(n8);
         
-        
+        // fft du vecteur x
         x=ftt.fft(x);
         System.out.println("FFT");
         System.out.println("-------------------");
+        // affichage
         for (int i = 0; i < x.size(); i++) {
             System.out.println(x.get(i));
         }

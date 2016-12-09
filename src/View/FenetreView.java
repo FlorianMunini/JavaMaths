@@ -81,12 +81,12 @@ public class FenetreView implements ActionListener, Observer {
 		powList2 = new JComboBox(pow2);
 		tPane.add(powList2);
 		
-		JLabel label = new JLabel("Pas de la courbe");
+		JLabel label = new JLabel("Pas de l'échantillonage");
 		tPane.add(label);
 		JTextField text =new JTextField();
 		tPane.add(text);
 
-		JLabel label2 = new JLabel("Nombre d'échantillon en puissance de 2");
+		JLabel label2 = new JLabel("Nombre d'échantillon en puissance de 2 par fenetre");
 		tPane.add(label2);
 
 		Integer[] pow = { 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,2048,4096 };
@@ -133,7 +133,7 @@ public class FenetreView implements ActionListener, Observer {
 
 	public void display() {
 		frame.setTitle("Fonctions usuelles");
-		frame.setSize(600, 300);
+		frame.setSize(700, 300);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
