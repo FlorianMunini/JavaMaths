@@ -55,11 +55,6 @@ public class FenetreController {
 		      this.graphView.close();    
 		    }
 	    
-	    public void notifyFonctionSet(int pas, String fct, int nbEch){
-	    	fonctionU.setFonctionActuel(fct);
-	    	
-	    	
-	    }
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

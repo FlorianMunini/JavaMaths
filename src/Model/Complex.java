@@ -161,7 +161,7 @@ package Model;
 	    
 	    //////////////////////////////////////////////////////////////////////////////////////////////////////////
 	    // Getters and Setters
-		public double getRe() {
+	public double getRe() {
 			return re;
 		}
 
@@ -169,4 +169,5 @@ package Model;
 			return im;
 		}
 	    
+
 }
