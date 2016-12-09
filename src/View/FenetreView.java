@@ -151,18 +151,14 @@ public class FenetreView implements ActionListener, Observer {
 	}
 	
 	 public void actionPerformed(ActionEvent e) {
-<<<<<<< HEAD
-}
 
-	   
-=======
 
 		 	//  Commencement de lien entre la view et le model pour changé a partir des valeur que on aura set sur cette view le graphique
 	    	//  this.controller.notifyFonctionSet(Integer.parseInt(this.text.getValue().toString()),this.getPowList2().getSelectedItem().toString(),Integer.parseInt(this.getPowList().getSelectedItem().toString()));
 	    	  
 	      }
 
->>>>>>> master
+
 
 	   
 	    public void update(Observable o, Object arg) {
